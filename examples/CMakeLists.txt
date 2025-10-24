@@ -1,18 +1,19 @@
+if (NOT APPLE)
+    add_executable(example_getRawFrame ./example_getRawFrame.cc)
+    target_link_libraries(example_getRawFrame ${SDKLIBS})
 
-add_executable(example_getRawFrame ./example_getRawFrame.cc)
-target_link_libraries(example_getRawFrame ${SDKLIBS})
+    add_executable(example_getDepthFrame ./example_getDepthFrame.cc)
+    target_link_libraries(example_getDepthFrame ${SDKLIBS})
 
-add_executable(example_getDepthFrame ./example_getDepthFrame.cc)
-target_link_libraries(example_getDepthFrame ${SDKLIBS})
+    add_executable(example_getRectFrame ./example_getRectFrame.cc)
+    target_link_libraries(example_getRectFrame ${SDKLIBS})
 
-add_executable(example_getRectFrame ./example_getRectFrame.cc)
-target_link_libraries(example_getRectFrame ${SDKLIBS})
+    add_executable(example_getCalibParamsFile ./example_getCalibParamsFile.cc)
+    target_link_libraries(example_getCalibParamsFile ${SDKLIBS})
 
-add_executable(example_getCalibParamsFile ./example_getCalibParamsFile.cc)
-target_link_libraries(example_getCalibParamsFile ${SDKLIBS})
-
-add_executable(example_putImagetrans ./example_putImagetrans.cc)
-target_link_libraries(example_putImagetrans ${SDKLIBS})
+    add_executable(example_putImagetrans ./example_putImagetrans.cc)
+    target_link_libraries(example_putImagetrans ${SDKLIBS})
+endif()
 
 add_executable(example_getimagetrans ./example_getimagetrans.cc)
 target_link_libraries(example_getimagetrans ${SDKLIBS})
@@ -55,12 +56,10 @@ else()
     message(WARNING "Point Cloud Example Disabled")
 endif()
 
-if(${ShowPointCloud})
-add_executable(example_getPointCloud ./example_getPointCloud.cc ./glViewer/glwindow_x11.cpp ./glViewer/scenewindow.cpp)
-target_link_libraries(example_getPointCloud ${SDKLIBS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${X11_LIBRARIES} )
+if(${ShowPointCloud} AND NOT APPLE)
+    add_executable(example_getPointCloud ./example_getPointCloud.cc ./glViewer/glwindow_x11.cpp ./glViewer/scenewindow.cpp)
+    target_link_libraries(example_getPointCloud ${SDKLIBS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${X11_LIBRARIES} )
 endif()
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
-
-

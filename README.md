@@ -28,6 +28,8 @@ CMake, version: 2.8 or higher
 2.Build
 ---
 
+> Note on macOS, the the CMakeLists have been modified to only build example_getimagetrans
+
 ```
 cd UnitreeCameraSDK;
 mkdir build && cd build;
@@ -79,6 +81,3 @@ listener:get image from another devices
 cd UnitreeCameraSDK; 
 ./bin/example_getimagetrans
 ```
-
-
-
